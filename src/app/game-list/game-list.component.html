@@ -1,4 +1,12 @@
-<div>
-    <img [src]="gamePicture" alt="game" />
-    <h2>Le super jeu</h2>
+<app-game-list-filter></app-game-list-filter>
+<div class="cards">
+    <div class="cards_list" *ngFor="let game of cards">
+        <div class="card">
+            <img src="{{ game[2] }}" alt="game">
+            <h2>{{ game[0] }}</h2>
+            <p>{{ game[1] }}</p>
+            <p>Note: {{ game[3] }}</p>
+            <p>Description: <i>{{ game[4] }}</i></p>
+        </div>
+    </div>
 </div>
