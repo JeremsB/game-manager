@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game-list-filter',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameListFilterComponent implements OnInit {
 
-  gameCategories = [ 'RTS', 'RPG', 'FPS' ];
+  @Input()
+  color: string;
+
+  @Input()
+  categories = [ 'RTS', 'RPG', 'FPS' ];
 
   constructor() { }
 

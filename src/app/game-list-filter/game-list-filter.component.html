@@ -2,10 +2,11 @@
 
 <div>
   <form>
+    Color: {{color}}
     <input type="text" id="name" name="name" placeholder="Name of the game">
     <select id="category" name="category">
       <option value="">Catégorie du jeu</option>
-      <option *ngFor="let c of gameCategories">{{ c }}</option>
+      <option *ngFor="let c of categories">{{ c }}</option>
     </select>
     <input type="text" id="editor" name="editor" placeholder="Editor of the game">
 

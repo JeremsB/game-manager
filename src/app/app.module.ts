@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { GameListFilterComponent } from './game-list-filter/game-list-filter.component';
+import { GameListButtonsComponent } from './game-list-buttons/game-list-buttons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameListComponent,
-    GameListFilterComponent
+    GameListFilterComponent,
+    GameListButtonsComponent,
   ],
   imports: [
     BrowserModule,
