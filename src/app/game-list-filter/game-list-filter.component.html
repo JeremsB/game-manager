@@ -1,16 +1,13 @@
-<h1>Game List Filter</h1>
+{{ form | json }}
 
-<div>
-  <form>
-    Color: {{color}}
-    <input type="text" id="name" name="name" placeholder="Name of the game">
-    <select id="category" name="category">
-      <option value="">Catégorie du jeu</option>
-      <option *ngFor="let c of categories">{{ c }}</option>
-    </select>
-    <input type="text" id="editor" name="editor" placeholder="Editor of the game">
+<form (submit)="onSubmit($event)">
+  <input (change)="onChange('name', $event.target.value)" name="name" type="text" placeholder="Nom">
+  <select (change)="onChange('category', $event.target.value)" name="category">
+    <option value="">Catégorie du jeu</option>
+    <option *ngFor="let c of gameCategories">{{ c }}</option>
+  </select>
+  <input (change)="onChange('editor', $event.target.value)" name="editor" type="text" placeholder="Editeur">
 
-    <input type="submit" value="Filtrer">
-    <input type="reset" value="RAZ">
-  </form>
-</div>
+  <input type="reset" value="RAZ" (click)="onReset()">
+  <input type="submit" value="Filter">
+</form>

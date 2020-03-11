@@ -1,19 +1,35 @@
-<app-game-list-filter color="red"></app-game-list-filter>
+<h1>Jeux disponibles</h1>
 
-<div class="cards">
-    <div class="cards_list" *ngFor="let game of cards">
-        <div class="card">
-            <img src="{{ game[2] }}" alt="game">
-            <h2>{{ game[0] }}</h2>
-            <p>{{ game[1] }}</p>
-            <p>Note: {{ game[3] }}</p>
-            <p>Description: <i>{{ game[4] }}</i></p>
-            <app-game-list-buttons gameName="{{game[0]}}"></app-game-list-buttons>
-            <!--
-            <button (click)="clicSurBouton(buttons[0],game[0])">Follow</button>
-            <button (click)="clicSurBouton(buttons[1],game[0])">Share</button>
-            <button (click)="clicSurBouton(buttons[2],game[0])">Buy</button>
-            -->
-        </div>
-    </div>
+<app-game-list-filter (filter)="onFilter($event)"></app-game-list-filter>
+
+<div>
+  <button (click)="sizeDown()">-</button>
+  <button (click)="sizeUp()">+</button>
+  <button (click)="sizeReset()">100%</button>
 </div>
+
+<section>
+  <article *ngFor="let game of filteredEntities" [ngStyle]="{'width': width + 'px'}">
+    <header>
+      <!--<img src="http://fakeimg.pl/50" alt="editor">-->
+      <div>
+        <h2>{{ game.name }}</h2>
+        <p>{{ game.category }}</p>
+      </div>
+      <div class="spacer"></div>
+      <p>{{ game.note }}/10</p>
+    </header>
+
+    <img [src]="game.image" alt="game logo">
+
+    <main>
+      {{ truncate(game.description) }}
+    </main>
+
+    <footer>
+      <app-game-actions
+          (click)="onActionClick($event, game)">
+      </app-game-actions>
+    </footer>
+  </article>
+</section>
